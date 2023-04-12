@@ -6,7 +6,17 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
+    outputs:
+      sentence: ${{steps.first-value.outputs.sentence}}
     runs-on: ubuntu-latest
     steps:
-    - name: "Print something"
-      run: echo "This is my first time"
+    - name: Print something
+      id: first-value
+      run: echo "This is my first time" >> write.txt sentence = write.txt >> $GITHUB.OUTPUTS
+  another:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print value from deploy
+        run: cat ${{needs.deploy.outputs.sentence}}
+
