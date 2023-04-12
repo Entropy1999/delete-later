@@ -1,0 +1,11 @@
+name: First Deployment
+on:
+push:
+  branches:
+    - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      name: "Print something"
+      run: echo "This is my first time"
