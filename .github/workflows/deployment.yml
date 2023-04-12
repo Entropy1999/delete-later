@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Print something
       id: first-value
-      run: echo "This is my first time" >> write.txt "sentence = write.txt" >> $GITHUB.OUTPUTS 
+      run: echo "This is my first time" >> write.txt "sentence = cat write.txt" >> $GITHUB.OUTPUT 
   another:
     needs: deploy
     runs-on: ubuntu-latest
